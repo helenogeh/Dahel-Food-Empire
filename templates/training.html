@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Training Registration - Dahel Food Empire</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <!-- WATERMARKS -->
+
+    <div class="watermarks">
+
+        <span>Dahel Food Empire</span>
+        <span>Dahel Food Empire</span>
+        <span>Dahel Food Empire</span>
+        <span>Dahel Food Empire</span>
+        <span>Dahel Food Empire</span>
+        <span>Dahel Food Empire</span>
+
+    </div>
+
+
+    <header>
+
+        <h1>Dahel Food Empire</h1>
+
+        <p>Creating Delight</p>
+
+    </header>
+
+
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="/order">Order Now</a>
+
+        <a href="/training">Training</a>
+
+        <a href="/#contact">Contact Us</a>
+
+    </nav>
+
+
+    <!-- TRAINING FORM -->
+
+    <section class="training-form-section">
+
+        <h2>Training Registration</h2>
+
+        <p>
+            Take the first step towards developing your food
+            business skills with Dahel Food Empire.
+        </p>
+
+
+        <form method="POST" action="/training">
+
+
+            <label for="name">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <label for="phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+
+            <label for="email">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email address"
+                required
+            >
+
+
+            <label for="training">
+                Training You Are Interested In
+            </label>
+
+            <select
+                id="training"
+                name="training"
+                required
+            >
+
+                <option value="">
+                    Select a training
+                </option>
+
+                <option value="Baking">
+                    Baking
+                </option>
+
+                <option value="Cake Decoration">
+                    Cake Decoration
+                </option>
+
+                <option value="Pastry Making">
+                    Pastry Making
+                </option>
+
+                <option value="Small Chops">
+                    Small Chops
+                </option>
+
+                <option value="Food Production">
+                    Food Production
+                </option>
+
+                <option value="Drinks Production">
+                    Drinks Production
+                </option>
+
+                <option value="Food Business">
+                    Starting a Food Business
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label for="training_type">
+                Training Type
+            </label>
+
+            <select
+                id="training_type"
+                name="training_type"
+                required
+            >
+
+                <option value="">
+                    Select training type
+                </option>
+
+                <option value="Physical">
+                    Physical Training
+                </option>
+
+                <option value="Online">
+                    Online Training
+                </option>
+
+                <option value="Not Sure">
+                    Not Sure Yet
+                </option>
+
+            </select>
+
+
+            <label for="experience">
+                Your Experience Level
+            </label>
+
+            <select
+                id="experience"
+                name="experience"
+                required
+            >
+
+                <option value="">
+                    Select your experience
+                </option>
+
+                <option value="Beginner">
+                    Beginner
+                </option>
+
+                <option value="Intermediate">
+                    Intermediate
+                </option>
+
+                <option value="Advanced">
+                    Advanced
+                </option>
+
+            </select>
+
+
+            <label for="location">
+                Preferred Training Location
+            </label>
+
+            <select
+                id="location"
+                name="location"
+                required
+            >
+
+                <option value="">
+                    Select location
+                </option>
+
+                <option value="Lafia">
+                    Lafia
+                </option>
+
+                <option value="Makurdi">
+                    Makurdi
+                </option>
+
+                <option value="Online">
+                    Online
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label for="start_date">
+                Preferred Start Date
+            </label>
+
+            <input
+                type="date"
+                id="start_date"
+                name="start_date"
+                required
+            >
+
+
+            <label for="goal">
+                What do you hope to achieve from this training?
+            </label>
+
+            <textarea
+                id="goal"
+                name="goal"
+                rows="5"
+                placeholder="Tell us what you hope to achieve..."
+                required
+            ></textarea>
+
+
+            <button
+                type="submit"
+                class="button"
+            >
+                Register for Training
+            </button>
+
+
+        </form>
+
+    </section>
+
+
+    <footer>
+
+        <h3>Dahel Food Empire</h3>
+
+        <p>Creating Delight</p>
+
+        <p>
+            © 2026 Dahel Food Empire. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

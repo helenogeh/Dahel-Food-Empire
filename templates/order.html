@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order - Dahel Food Empire</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Dahel Food Empire</h1>
+        <p>Place Your Order</p>
+    </header>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/order">Order Now</a>
+    </nav>
+
+    <section class="products">
+
+        <h2>Place Your Order</h2>
+
+        <p>Choose what you would like to order.</p>
+
+        <form method="POST" action="/order">
+
+            <label for="product">Select Product:</label>
+            <br><br>
+
+            <select id="product" name="product" required>
+
+                <option value="Cake">Cake</option>
+
+                <option value="Pastries">Pastries</option>
+
+                <option value="Snacks">Snacks</option>
+
+                <option value="Drinks">Drinks</option>
+
+            </select>
+
+            <br><br>
+
+            <label for="quantity">Quantity:</label>
+            <br><br>
+
+            <input
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="1"
+                value="1"
+                required
+            >
+
+            <br><br>
+
+            <label for="name">Your Name:</label>
+            <br><br>
+
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <br><br>
+
+            <label for="phone">Phone Number:</label>
+            <br><br>
+
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+            <br><br>
+
+            <label for="address">Delivery Address:</label>
+            <br><br>
+
+            <textarea
+                id="address"
+                name="address"
+                placeholder="Enter your delivery address"
+                rows="4"
+                required
+            ></textarea>
+
+            <br><br>
+
+            <button type="submit" class="button">
+                Place Order
+            </button>
+
+        </form>
+
+    </section>
+
+    <footer>
+
+        <p>
+            © 2026 Dahel Food Empire. Creating Delight.
+        </p>
+
+    </footer>
+
+</body>
+</html>

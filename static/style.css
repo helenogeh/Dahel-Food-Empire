@@ -1,0 +1,434 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #fff8f0;
+    color: #333;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   WATERMARKS
+========================= */
+
+.watermarks {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.watermarks span {
+    position: absolute;
+    font-size: 45px;
+    font-weight: bold;
+    color: rgba(245, 124, 0, 0.055);
+    white-space: nowrap;
+    transform: rotate(-30deg);
+}
+
+
+/* WATERMARK POSITIONS */
+
+.watermarks span:nth-child(1) {
+    top: 8%;
+    left: -5%;
+}
+
+.watermarks span:nth-child(2) {
+    top: 23%;
+    left: 40%;
+}
+
+.watermarks span:nth-child(3) {
+    top: 38%;
+    left: -10%;
+}
+
+.watermarks span:nth-child(4) {
+    top: 53%;
+    left: 45%;
+}
+
+.watermarks span:nth-child(5) {
+    top: 68%;
+    left: -5%;
+}
+
+.watermarks span:nth-child(6) {
+    top: 83%;
+    left: 40%;
+}
+
+
+/* KEEP WEBSITE ABOVE WATERMARK */
+
+header,
+nav,
+section,
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background-color: #f57c00;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 38px;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 20px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+    background-color: #17365d;
+    padding: 18px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff9800;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background-color: #fff0dc;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.hero h1 {
+    color: #f57c00;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    color: #17365d;
+}
+
+.hero p {
+    max-width: 750px;
+    margin: 20px auto;
+    font-size: 19px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.button {
+    display: inline-block;
+    background-color: #f57c00;
+    color: white;
+    padding: 13px 28px;
+    margin-top: 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #17365d;
+}
+
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+.section {
+    padding: 60px 20px;
+    text-align: center;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.section h2,
+.mission h2,
+.vision h2,
+.order-section h2,
+.contact-section h2,
+.training-form-section h2 {
+    color: #17365d;
+    font-size: 32px;
+}
+
+.section p {
+    max-width: 850px;
+    margin: 15px auto;
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.service-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.service {
+    background-color: white;
+    width: 280px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.service h3 {
+    color: #f57c00;
+    font-size: 21px;
+}
+
+
+/* =========================
+   MISSION
+========================= */
+
+.mission {
+    background-color: #f57c00;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.mission h2 {
+    color: white;
+}
+
+.mission p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 18px;
+}
+
+
+/* =========================
+   VISION
+========================= */
+
+.vision {
+    background-color: #17365d;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.vision h2 {
+    color: white;
+}
+
+.vision p {
+    max-width: 800px;
+    margin: auto;
+    font-size: 18px;
+}
+
+
+/* =========================
+   ORDER SECTION
+========================= */
+
+.order-section {
+    background-color: #fff0dc;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-section {
+    padding: 70px 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.contact-section > p {
+    max-width: 700px;
+    margin: 15px auto 40px;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.contact-card {
+    background-color: #fff8f0;
+    width: 300px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card h3 {
+    color: #f57c00;
+}
+
+.contact-card a {
+    color: #17365d;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.contact-card a:hover {
+    color: #f57c00;
+}
+
+
+/* =========================
+   TRAINING FORM
+========================= */
+
+.training-form-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.training-form-section > p {
+    margin-bottom: 30px;
+}
+
+.training-form-section form {
+    text-align: left;
+}
+
+.training-form-section label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 7px;
+    font-weight: bold;
+    color: #17365d;
+}
+
+.training-form-section input,
+.training-form-section select,
+.training-form-section textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+.training-form-section textarea {
+    resize: vertical;
+}
+
+.training-form-section .button {
+    width: 100%;
+    margin-top: 25px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background-color: #17365d;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+footer h3 {
+    color: #ff9800;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px;
+    }
+
+    .service {
+        width: 90%;
+    }
+
+    .contact-card {
+        width: 90%;
+    }
+
+    .training-form-section {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .watermarks span {
+        font-size: 30px;
+    }
+
+}
