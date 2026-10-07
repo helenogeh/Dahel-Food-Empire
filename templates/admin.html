@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Dahel Food Empire | Admin Dashboard
+    </title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family: Arial, sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f4eaff,
+                    #f2fff5,
+                    #fff3e7
+                );
+
+            color: #333;
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+
+            padding: 30px 6%;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #5b3478,
+                    #2f7d49,
+                    #e87918,
+                    #5b3478
+                );
+
+            background-size: 300% 300%;
+
+            animation: movingColours 10s ease infinite;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        @keyframes movingColours {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+
+        header h1 {
+
+            font-size: 35px;
+
+            margin-bottom: 5px;
+        }
+
+
+        header p {
+
+            opacity: 0.9;
+        }
+
+
+        /* WATERMARK */
+
+        .header-watermark {
+
+            position: absolute;
+
+            right: 5%;
+
+            top: 20px;
+
+            font-size: 55px;
+
+            font-weight: bold;
+
+            opacity: 0.08;
+
+            transform: rotate(-8deg);
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           TOP BAR
+        ========================= */
+
+        .top-bar {
+
+            max-width: 1300px;
+
+            margin: 25px auto;
+
+            padding: 0 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        .welcome {
+
+            color: #5b3478;
+
+            font-size: 24px;
+
+            font-weight: bold;
+        }
+
+
+        .logout {
+
+            display: inline-block;
+
+            background: #c0392b;
+
+            color: white;
+
+            padding: 11px 20px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .logout:hover {
+
+            background: #922b21;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           STAT CARDS
+        ========================= */
+
+        .stats {
+
+            max-width: 1300px;
+
+            margin: 25px auto;
+
+            padding: 0 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.08);
+
+            position: relative;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+
+        .stat-card:hover {
+
+            transform: translateY(-5px);
+        }
+
+
+        .stat-card h3 {
+
+            color: #777;
+
+            margin-bottom: 12px;
+        }
+
+
+        .stat-number {
+
+            font-size: 42px;
+
+            font-weight: bold;
+
+            color: #5b3478;
+        }
+
+
+        .stat-card.order-stat {
+
+            border-left: 7px solid #e87918;
+        }
+
+
+        .stat-card.training-stat {
+
+            border-left: 7px solid #2f7d49;
+        }
+
+
+        .stat-icon {
+
+            position: absolute;
+
+            right: 25px;
+
+            top: 25px;
+
+            font-size: 45px;
+
+            opacity: 0.18;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .container {
+
+            max-width: 1300px;
+
+            margin: 30px auto;
+
+            padding: 0 20px;
+        }
+
+
+        .section-card {
+
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            margin-bottom: 35px;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,0.08);
+
+            overflow: hidden;
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 20px;
+
+            padding-bottom: 15px;
+
+            border-bottom: 3px solid #f0e5fa;
+        }
+
+
+        .section-title h2 {
+
+            color: #5b3478;
+
+            font-size: 26px;
+        }
+
+
+        .section-title span {
+
+            background: #eee1ff;
+
+            color: #5b3478;
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-wrapper {
+
+            overflow-x: auto;
+        }
+
+
+        table {
+
+            width: 100%;
+
+            min-width: 900px;
+
+            border-collapse: collapse;
+        }
+
+
+        th {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #5b3478,
+                    #2f7d49
+                );
+
+            color: white;
+
+            padding: 14px;
+
+            text-align: left;
+
+            white-space: nowrap;
+        }
+
+
+        td {
+
+            padding: 13px;
+
+            border-bottom: 1px solid #eee;
+
+            vertical-align: top;
+        }
+
+
+        tr:nth-child(even) {
+
+            background: #faf8ff;
+        }
+
+
+        tr:hover {
+
+            background: #f3eaff;
+        }
+
+
+        /* ORDER PRODUCT */
+
+        .product-badge {
+
+            display: inline-block;
+
+            background: #fff0df;
+
+            color: #c35f0b;
+
+            padding: 6px 10px;
+
+            border-radius: 15px;
+
+            font-weight: bold;
+        }
+
+
+        /* TRAINING BADGE */
+
+        .training-badge {
+
+            display: inline-block;
+
+            background: #e9f8ee;
+
+            color: #277044;
+
+            padding: 6px 10px;
+
+            border-radius: 15px;
+
+            font-weight: bold;
+        }
+
+
+        /* EMPTY */
+
+        .empty {
+
+            text-align: center;
+
+            padding: 40px;
+
+            color: #888;
+
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            margin-top: 60px;
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            background: #24152f;
+
+            color: white;
+        }
+
+
+        footer h2 {
+
+            color: #d9b4ff;
+
+            margin-bottom: 8px;
+        }
+
+
+        footer p {
+
+            color: #ccc;
+
+            margin: 7px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            header {
+
+                padding: 25px 20px;
+            }
+
+
+            header h1 {
+
+                font-size: 27px;
+            }
+
+
+            .header-watermark {
+
+                font-size: 30px;
+
+                top: 30px;
+            }
+
+
+            .top-bar {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .section-card {
+
+                padding: 18px;
+            }
+
+
+            .section-title {
+
+                align-items: flex-start;
+
+                gap: 10px;
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <h1>
+        Dahel Food Empire
+    </h1>
+
+    <p>
+        Admin Dashboard • Creating Delight
+    </p>
+
+
+    <div class="header-watermark">
+        DAHEL
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     TOP BAR
+========================= -->
+
+<div class="top-bar">
+
+    <div class="welcome">
+
+        📊 Business Dashboard
+
+    </div>
+
+
+    <a
+        href="/admin/logout"
+        class="logout"
+    >
+        Logout
+    </a>
+
+</div>
+
+
+
+<!-- =========================
+     STATISTICS
+========================= -->
+
+<section class="stats">
+
+
+    <div class="stat-card order-stat">
+
+        <div class="stat-icon">
+            🛒
+        </div>
+
+        <h3>
+            Customer Orders
+        </h3>
+
+        <div class="stat-number">
+            {{ orders|length }}
+        </div>
+
+    </div>
+
+
+
+    <div class="stat-card training-stat">
+
+        <div class="stat-icon">
+            🎓
+        </div>
+
+        <h3>
+            Training Registrations
+        </h3>
+
+        <div class="stat-number">
+            {{ registrations|length }}
+        </div>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+
+<div class="container">
+
+
+    <!-- =========================
+         ORDERS
+    ========================= -->
+
+    <div class="section-card">
+
+
+        <div class="section-title">
+
+            <h2>
+                🛒 Customer Orders
+            </h2>
+
+            <span>
+                {{ orders|length }} Orders
+            </span>
+
+        </div>
+
+
+        {% if orders %}
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Product
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                        <th>
+                            Customer Name
+                        </th>
+
+                        <th>
+                            Phone
+                        </th>
+
+                        <th>
+                            Delivery Address
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for order in orders %}
+
+                    <tr>
+
+                        <td>
+                            {{ order[0] }}
+                        </td>
+
+
+                        <td>
+
+                            <span class="product-badge">
+
+                                {{ order[1] }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            {{ order[2] }}
+                        </td>
+
+
+                        <td>
+                            <strong>
+                                {{ order[3] }}
+                            </strong>
+                        </td>
+
+
+                        <td>
+                            {{ order[4] }}
+                        </td>
+
+
+                        <td>
+                            {{ order[5] }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+        <div class="empty">
+
+            🛒 No customer orders yet.
+
+        </div>
+
+        {% endif %}
+
+
+    </div>
+
+
+
+    <!-- =========================
+         TRAINING REGISTRATIONS
+    ========================= -->
+
+    <div class="section-card">
+
+
+        <div class="section-title">
+
+            <h2>
+                🎓 Training Registrations
+            </h2>
+
+            <span>
+                {{ registrations|length }} Registrations
+            </span>
+
+        </div>
+
+
+        {% if registrations %}
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            ID
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+
+                        <th>
+                            Phone
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Training
+                        </th>
+
+                        <th>
+                            Training Type
+                        </th>
+
+                        <th>
+                            Experience
+                        </th>
+
+                        <th>
+                            Location
+                        </th>
+
+                        <th>
+                            Start Date
+                        </th>
+
+                        <th>
+                            Goal
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for registration in registrations %}
+
+                    <tr>
+
+                        <td>
+                            {{ registration[0] }}
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+                                {{ registration[1] }}
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+                            {{ registration[2] }}
+                        </td>
+
+
+                        <td>
+                            {{ registration[3] }}
+                        </td>
+
+
+                        <td>
+
+                            <span class="training-badge">
+
+                                {{ registration[4] }}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+                            {{ registration[5] }}
+                        </td>
+
+
+                        <td>
+                            {{ registration[6] }}
+                        </td>
+
+
+                        <td>
+                            {{ registration[7] }}
+                        </td>
+
+
+                        <td>
+                            {{ registration[8] }}
+                        </td>
+
+
+                        <td>
+                            {{ registration[9] }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        {% else %}
+
+        <div class="empty">
+
+            🎓 No training registrations yet.
+
+        </div>
+
+        {% endif %}
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h2>
+        Dahel Food Empire
+    </h2>
+
+    <p>
+        Creating Delight
+    </p>
+
+    <p>
+        © 2026 Dahel Food Empire. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

@@ -2,300 +2,1168 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Training Registration - Dahel Food Empire</title>
+    <title>Training | Dahel Food Empire</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        body {
+            background: #faf7ff;
+        }
+
+        /* HERO */
+
+        .training-hero {
+            min-height: 430px;
+            padding: 70px 7%;
+            display: flex;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    rgba(91, 52, 120, 0.82),
+                    rgba(91, 52, 120, 0.82)
+                ),
+                url("https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+        }
+
+        .training-hero-content {
+            max-width: 700px;
+        }
+
+        .training-hero h1 {
+            font-size: 55px;
+            line-height: 1.1;
+            margin: 15px 0;
+        }
+
+        .training-hero p {
+            font-size: 19px;
+        }
+
+        .hero-label {
+            color: #ff9f43;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+
+        /* INTRO */
+
+        .training-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: auto;
+            padding: 65px 20px 35px;
+        }
+
+        .training-intro h2 {
+            color: #5b3478;
+            font-size: 38px;
+        }
+
+        .training-intro p {
+            color: #555;
+            font-size: 17px;
+        }
+
+
+        /* TRAINING CARDS */
+
+        .training-options {
+            max-width: 1150px;
+            margin: 30px auto 60px;
+            padding: 0 25px;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .training-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+
+            box-shadow: 0 8px 25px rgba(91, 52, 120, 0.12);
+
+            transition: 0.3s;
+        }
+
+        .training-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .training-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+
+        .training-card-content {
+            padding: 20px;
+        }
+
+        .training-card h3 {
+            color: #5b3478;
+            margin-bottom: 8px;
+        }
+
+        .training-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+
+        /* FORM AREA */
+
+        .registration-section {
+            padding: 70px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eee1ff,
+                    #fff7ed
+                );
+        }
+
+        .registration-container {
+            max-width: 950px;
+            margin: auto;
+
+            background: white;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 15px 45px rgba(91, 52, 120, 0.15);
+
+            overflow: hidden;
+        }
+
+
+        /* FORM HEADER */
+
+        .form-header {
+            background: #5b3478;
+            color: white;
+
+            padding: 35px;
+
+            text-align: center;
+        }
+
+        .form-header h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            opacity: 0.9;
+        }
+
+
+        /* FORM */
+
+        .registration-form {
+            padding: 40px;
+        }
+
+        .form-section {
+            margin-bottom: 35px;
+        }
+
+        .form-section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: #5b3478;
+
+            font-size: 22px;
+
+            margin-bottom: 20px;
+
+            border-bottom: 2px solid #eee1ff;
+
+            padding-bottom: 10px;
+        }
+
+        .number {
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #ff9f43;
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+
+        /* INPUT GRID */
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #333;
+
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 9px;
+
+            font-size: 15px;
+
+            box-sizing: border-box;
+
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            outline: none;
+
+            border-color: #9b59b6;
+
+            box-shadow:
+                0 0 0 3px rgba(155, 89, 182, 0.12);
+        }
+
+
+        /* TRAINING CHECKBOXES */
+
+        .training-checkboxes {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+        }
+
+        .training-checkbox {
+
+            position: relative;
+        }
+
+        .training-checkbox input {
+
+            position: absolute;
+
+            opacity: 0;
+        }
+
+        .training-checkbox label {
+
+            display: block;
+
+            padding: 15px;
+
+            border: 2px solid #eadff5;
+
+            border-radius: 12px;
+
+            background: #fcf9ff;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .training-checkbox label:hover {
+
+            border-color: #c39bd8;
+
+            background: #f7efff;
+        }
+
+        .training-checkbox input:checked + label {
+
+            border-color: #5b3478;
+
+            background: #eee1ff;
+
+            color: #5b3478;
+
+            font-weight: bold;
+        }
+
+
+        /* BUTTON */
+
+        .register-button {
+
+            width: 100%;
+
+            padding: 17px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #ff8c2a;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .register-button:hover {
+
+            background: #e87512;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* SMALL MESSAGE */
+
+        .form-note {
+
+            text-align: center;
+
+            margin-top: 15px;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+
+        /* CTA */
+
+        .training-cta {
+
+            padding: 70px 20px;
+
+            text-align: center;
+
+            background: #5b3478;
+
+            color: white;
+        }
+
+        .training-cta h2 {
+
+            font-size: 38px;
+
+            margin-bottom: 15px;
+        }
+
+        .training-cta p {
+
+            max-width: 650px;
+
+            margin: auto auto 25px;
+        }
+
+        .cta-button {
+
+            display: inline-block;
+
+            background: #ff9f43;
+
+            color: white;
+
+            padding: 14px 28px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            .training-options {
+
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .training-hero {
+
+                min-height: 380px;
+
+                padding: 60px 25px;
+            }
+
+            .training-hero h1 {
+
+                font-size: 40px;
+            }
+
+            .training-options {
+
+                grid-template-columns: 1fr;
+            }
+
+            .input-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+            .training-checkboxes {
+
+                grid-template-columns: 1fr;
+            }
+
+            .registration-form {
+
+                padding: 25px;
+            }
+
+            .form-header {
+
+                padding: 28px 20px;
+            }
+
+            .training-cta h2 {
+
+                font-size: 30px;
+            }
+        }
+
+    </style>
 
 </head>
 
 
 <body>
 
-    <!-- WATERMARKS -->
 
-    <div class="watermarks">
+<!-- NAVIGATION -->
 
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
+<header class="navbar">
+
+    <div class="logo">
+
+        <h2>Dahel Food Empire</h2>
+
+        <span>Creating Delight</span>
 
     </div>
-
-
-    <header>
-
-        <h1>Dahel Food Empire</h1>
-
-        <p>Creating Delight</p>
-
-    </header>
 
 
     <nav>
 
         <a href="/">Home</a>
 
-        <a href="/order">Order Now</a>
+        <a href="/#about">About</a>
+
+        <a href="/#services">Services</a>
 
         <a href="/training">Training</a>
 
-        <a href="/#contact">Contact Us</a>
+        <a href="/order">Order Now</a>
+
+        <a href="/#contact">Contact</a>
 
     </nav>
 
+</header>
 
-    <!-- TRAINING FORM -->
 
-    <section class="training-form-section">
 
-        <h2>Training Registration</h2>
+<!-- HERO -->
 
-        <p>
-            Take the first step towards developing your food
-            business skills with Dahel Food Empire.
+<section class="training-hero">
+
+    <div class="training-hero-content">
+
+        <p class="hero-label">
+            LEARN • CREATE • GROW
         </p>
 
+        <h1>
+            Turn Your Passion Into a Skill
+        </h1>
 
-        <form method="POST" action="/training">
+        <p>
+            Learn practical food production and business skills
+            with Dahel Food Empire.
+        </p>
 
+    </div>
 
-            <label for="name">
-                Full Name
-            </label>
-
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your full name"
-                required
-            >
+</section>
 
 
-            <label for="phone">
-                Phone Number
-            </label>
 
-            <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Enter your phone number"
-                required
-            >
+<!-- INTRO -->
 
+<section class="training-intro">
 
-            <label for="email">
-                Email Address
-            </label>
+    <h2>
+        Explore Our Training Programmes
+    </h2>
 
-            <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email address"
-                required
-            >
+    <p>
+        Choose one or more areas you would love to learn.
+        You can select multiple trainings when registering.
+    </p>
+
+</section>
 
 
-            <label for="training">
-                Training You Are Interested In
-            </label>
 
-            <select
-                id="training"
-                name="training"
-                required
-            >
+<!-- TRAINING CARDS -->
 
-                <option value="">
-                    Select a training
-                </option>
-
-                <option value="Baking">
-                    Baking
-                </option>
-
-                <option value="Cake Decoration">
-                    Cake Decoration
-                </option>
-
-                <option value="Pastry Making">
-                    Pastry Making
-                </option>
-
-                <option value="Small Chops">
-                    Small Chops
-                </option>
-
-                <option value="Food Production">
-                    Food Production
-                </option>
-
-                <option value="Drinks Production">
-                    Drinks Production
-                </option>
-
-                <option value="Food Business">
-                    Starting a Food Business
-                </option>
-
-                <option value="Other">
-                    Other
-                </option>
-
-            </select>
+<section class="training-options">
 
 
-            <label for="training_type">
-                Training Type
-            </label>
+    <div class="training-card">
 
-            <select
-                id="training_type"
-                name="training_type"
-                required
-            >
+        <img
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80"
+            alt="Beautiful cake">
 
-                <option value="">
-                    Select training type
-                </option>
+        <div class="training-card-content">
 
-                <option value="Physical">
-                    Physical Training
-                </option>
+            <h3>🎂 Baking</h3>
 
-                <option value="Online">
-                    Online Training
-                </option>
+            <p>
+                Learn how to make delicious cakes and baked products.
+            </p>
 
-                <option value="Not Sure">
-                    Not Sure Yet
-                </option>
+        </div>
 
-            </select>
+    </div>
 
 
-            <label for="experience">
-                Your Experience Level
-            </label>
 
-            <select
-                id="experience"
-                name="experience"
-                required
-            >
+    <div class="training-card">
 
-                <option value="">
-                    Select your experience
-                </option>
+        <img
+            src="https://images.unsplash.com/photo-1626803775151-61d756612f97?auto=format&fit=crop&w=700&q=80"
+            alt="Cake decoration">
 
-                <option value="Beginner">
-                    Beginner
-                </option>
+        <div class="training-card-content">
 
-                <option value="Intermediate">
-                    Intermediate
-                </option>
+            <h3>🎨 Cake Decoration</h3>
 
-                <option value="Advanced">
-                    Advanced
-                </option>
+            <p>
+                Develop practical skills for decorating beautiful cakes.
+            </p>
 
-            </select>
+        </div>
+
+    </div>
 
 
-            <label for="location">
-                Preferred Training Location
-            </label>
 
-            <select
-                id="location"
-                name="location"
-                required
-            >
+    <div class="training-card">
 
-                <option value="">
-                    Select location
-                </option>
+        <img
+            src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=80"
+            alt="Pastries">
 
-                <option value="Lafia">
-                    Lafia
-                </option>
+        <div class="training-card-content">
 
-                <option value="Makurdi">
-                    Makurdi
-                </option>
+            <h3>🥐 Pastry Making</h3>
 
-                <option value="Online">
-                    Online
-                </option>
+            <p>
+                Learn how to prepare different delicious pastries.
+            </p>
 
-                <option value="Other">
-                    Other
-                </option>
+        </div>
 
-            </select>
+    </div>
 
 
-            <label for="start_date">
-                Preferred Start Date
-            </label>
 
-            <input
-                type="date"
-                id="start_date"
-                name="start_date"
-                required
-            >
+    <div class="training-card">
+
+        <img
+            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"
+            alt="Food preparation">
+
+        <div class="training-card-content">
+
+            <h3>🍴 Food Production</h3>
+
+            <p>
+                Learn practical food preparation and production skills.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 
-            <label for="goal">
-                What do you hope to achieve from this training?
-            </label>
 
-            <textarea
-                id="goal"
-                name="goal"
-                rows="5"
-                placeholder="Tell us what you hope to achieve..."
-                required
-            ></textarea>
+<!-- REGISTRATION FORM -->
 
+<section class="registration-section">
+
+    <div class="registration-container">
+
+
+        <div class="form-header">
+
+            <h2>
+                📝 Training Registration
+            </h2>
+
+            <p>
+                Complete the form below and take the first step.
+            </p>
+
+        </div>
+
+
+
+        <form
+            method="POST"
+            action="/training"
+            class="registration-form"
+        >
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+
+                    <span class="number">1</span>
+
+                    Personal Information
+
+                </h3>
+
+
+                <div class="input-grid">
+
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group full">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TRAINING -->
+
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+
+                    <span class="number">2</span>
+
+                    Choose Your Training
+
+                </h3>
+
+
+                <p style="margin-bottom:15px;color:#666;">
+
+                    Select all the trainings you are interested in.
+
+                </p>
+
+
+                <div class="training-checkboxes">
+
+
+                    <div class="training-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="baking"
+                            name="training"
+                            value="Baking"
+                        >
+
+                        <label for="baking">
+                            🎂 Baking
+                        </label>
+
+                    </div>
+
+
+
+                    <div class="training-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="decoration"
+                            name="training"
+                            value="Cake Decoration"
+                        >
+
+                        <label for="decoration">
+                            🎨 Cake Decoration
+                        </label>
+
+                    </div>
+
+
+
+                    <div class="training-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="pastry"
+                            name="training"
+                            value="Pastry Making"
+                        >
+
+                        <label for="pastry">
+                            🥐 Pastry Making
+                        </label>
+
+                    </div>
+
+
+
+                    <div class="training-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="small-chops"
+                            name="training"
+                            value="Small Chops"
+                        >
+
+                        <label for="small-chops">
+                            🥟 Small Chops
+                        </label>
+
+                    </div>
+
+
+
+                    <div class="training-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="food"
+                            name="training"
+                            value="Food Production"
+                        >
+
+                        <label for="food">
+                            🍲 Food Production
+                        </label>
+
+                    </div>
+
+
+
+                    <div class="training-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="drinks"
+                            name="training"
+                            value="Drinks Production"
+                        >
+
+                        <label for="drinks">
+                            🥤 Drinks Production
+                        </label>
+
+                    </div>
+
+
+
+                    <div class="training-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="business"
+                            name="training"
+                            value="Starting a Food Business"
+                        >
+
+                        <label for="business">
+                            💼 Starting a Food Business
+                        </label>
+
+                    </div>
+
+
+
+                    <div class="training-checkbox">
+
+                        <input
+                            type="checkbox"
+                            id="other"
+                            name="training"
+                            value="Other"
+                        >
+
+                        <label for="other">
+                            ✨ Other
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PREFERENCES -->
+
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+
+                    <span class="number">3</span>
+
+                    Training Preferences
+
+                </h3>
+
+
+                <div class="input-grid">
+
+
+                    <div class="form-group">
+
+                        <label for="training_type">
+                            Training Type
+                        </label>
+
+                        <select
+                            id="training_type"
+                            name="training_type"
+                            required
+                        >
+
+                            <option value="">
+                                Select training type
+                            </option>
+
+                            <option value="Physical">
+                                Physical Training
+                            </option>
+
+                            <option value="Online">
+                                Online Training
+                            </option>
+
+                            <option value="Not Sure">
+                                Not Sure Yet
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="experience">
+                            Experience Level
+                        </label>
+
+                        <select
+                            id="experience"
+                            name="experience"
+                            required
+                        >
+
+                            <option value="">
+                                Select your experience
+                            </option>
+
+                            <option value="Beginner">
+                                Beginner
+                            </option>
+
+                            <option value="Intermediate">
+                                Intermediate
+                            </option>
+
+                            <option value="Advanced">
+                                Advanced
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="location">
+                            Preferred Location
+                        </label>
+
+                        <select
+                            id="location"
+                            name="location"
+                            required
+                        >
+
+                            <option value="">
+                                Select location
+                            </option>
+
+                            <option value="Lafia">
+                                Lafia
+                            </option>
+
+                            <option value="Makurdi">
+                                Makurdi
+                            </option>
+
+                            <option value="Online">
+                                Online
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="start_date">
+                            Preferred Start Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="start_date"
+                            name="start_date"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- GOAL -->
+
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+
+                    <span class="number">4</span>
+
+                    Your Goal
+
+                </h3>
+
+
+                <div class="form-group">
+
+                    <label for="goal">
+                        What do you hope to achieve?
+                    </label>
+
+                    <textarea
+                        id="goal"
+                        name="goal"
+                        rows="6"
+                        placeholder="Tell us what you hope to achieve from the training..."
+                        required
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BUTTON -->
 
             <button
                 type="submit"
-                class="button"
+                class="register-button"
             >
-                Register for Training
+
+                💜 Register for Training 🧡
+
             </button>
+
+
+            <p class="form-note">
+
+                Your information will be used to contact you
+                about your training registration.
+
+            </p>
 
 
         </form>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <footer>
 
-        <h3>Dahel Food Empire</h3>
+<!-- CTA -->
 
-        <p>Creating Delight</p>
+<section class="training-cta">
 
-        <p>
-            © 2026 Dahel Food Empire. All Rights Reserved.
-        </p>
+    <h2>
+        Ready to Start Learning?
+    </h2>
 
-    </footer>
+    <p>
+        Choose your training, register today and start developing
+        practical skills that can create new opportunities.
+    </p>
+
+    <a
+        href="/"
+        class="cta-button"
+    >
+        Back to Dahel Food Empire
+    </a>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <h2>Dahel Food Empire</h2>
+
+    <p>Creating Delight</p>
+
+    <p>
+        © 2026 Dahel Food Empire. All Rights Reserved.
+    </p>
+
+</footer>
 
 
 </body>

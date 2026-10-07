@@ -2,224 +2,122 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Dahel Food Empire | Creating Delight</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='style.css') }}">
-
 </head>
-
 
 <body>
 
-    <!-- WATERMARKS -->
+    <!-- Navigation -->
 
-    <div class="watermarks">
+    <header class="navbar">
 
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
-        <span>Dahel Food Empire</span>
+        <div class="logo">
+            <h2>Dahel Food Empire</h2>
+            <span>Creating Delight</span>
+        </div>
 
-    </div>
-
-
-    <!-- HEADER -->
-
-    <header>
-
-        <h1>Dahel Food Empire</h1>
-
-        <p>Creating Delight</p>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="/training">Training</a>
+            <a href="/order">Order Now</a>
+            <a href="#contact">Contact</a>
+        </nav>
 
     </header>
 
 
-    <!-- NAVIGATION -->
-
-    <nav>
-
-        <a href="/">Home</a>
-
-        <a href="#about">About Us</a>
-
-        <a href="#services">Services</a>
-
-        <a href="#training">Training</a>
-
-        <a href="/order">Order Now</a>
-
-        <a href="#contact">Contact Us</a>
-
-    </nav>
-
-
-    <!-- HERO -->
+    <!-- Hero Section -->
 
     <section class="hero">
 
-        <h1>Welcome to Dahel Food Empire</h1>
+        <div class="hero-content">
 
-        <h2>Creating Delight, One Product at a Time</h2>
+            <p class="welcome">
+                WELCOME TO DAHEL FOOD EMPIRE
+            </p>
 
-        <p>
-            We create delicious food products, beautiful cakes,
-            quality pastries and memorable experiences for our customers.
-        </p>
+            <h1>
+                Delicious Food.<br>
+                Beautiful Moments.
+            </h1>
 
-        <a href="/order" class="button">
-            Order Now
-        </a>
+            <p class="hero-text">
+                We create delicious cakes, pastries, snacks, drinks
+                and food while helping aspiring food entrepreneurs
+                develop practical skills.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="/order" class="button">
+                    Order Now
+                </a>
+
+                <a href="/training" class="button button-outline">
+                    Join Our Training
+                </a>
+
+            </div>
+
+        </div>
 
     </section>
 
 
-    <!-- ABOUT -->
+    <!-- About Section -->
 
-    <section class="section" id="about">
+    <section id="about" class="section">
 
-        <h2>About Dahel Food Empire</h2>
+        <div class="section-title">
 
-        <p>
-            Dahel Food Empire is a food and hospitality business
-            focused on creating quality food products and services
-            that bring satisfaction and delight to our customers.
-        </p>
+            <p>ABOUT US</p>
 
-        <p>
-            We specialize in cakes, pastries, drinks, small chops,
-            food production, event decoration, consultancy and
-            practical food business training.
-        </p>
+            <h2>Creating Delight Through Food</h2>
 
-        <p>
-            Our goal is to combine quality, creativity and excellent
-            service to give our customers products and experiences
-            they can trust.
-        </p>
+        </div>
 
-    </section>
+        <div class="about-content">
 
+            <div>
 
-    <!-- SERVICES -->
-
-    <section class="section" id="services">
-
-        <h2>Our Services</h2>
-
-        <div class="service-list">
-
-            <div class="service">
-
-                <h3>🎂 Cakes</h3>
+                <h3>Welcome to Dahel Food Empire</h3>
 
                 <p>
-                    Beautiful and delicious cakes for birthdays,
-                    weddings, celebrations and special occasions.
+                    Dahel Food Empire is a food business focused on
+                    creating delicious food products and providing
+                    practical food production and business training.
                 </p>
+
+                <p>
+                    From cakes and pastries to snacks, drinks,
+                    catering and food production, we are passionate
+                    about creating quality products and helping
+                    people turn their food skills into opportunities.
+                </p>
+
+                <a href="/training" class="text-button">
+                    Learn About Our Training →
+                </a>
 
             </div>
 
+            <div class="about-card">
 
-            <div class="service">
-
-                <h3>🥐 Pastries</h3>
-
-                <p>
-                    Freshly prepared pastries made with quality
-                    ingredients and attention to detail.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>🥤 Drinks</h3>
+                <h3>Our Promise</h3>
 
                 <p>
-                    Refreshing drinks suitable for homes,
-                    events and special occasions.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>🍢 Small Chops</h3>
-
-                <p>
-                    Delicious small chops prepared for parties,
-                    meetings, celebrations and other events.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>🍽️ Catering</h3>
-
-                <p>
-                    Food preparation and catering services
-                    for different types of events and occasions.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>🎨 Event Decoration</h3>
-
-                <p>
-                    Creative event decoration services designed
-                    to make your celebrations beautiful and memorable.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>💼 Consultancy</h3>
-
-                <p>
-                    Food business and production consultancy
-                    to help individuals develop their skills
-                    and businesses.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>👩‍🍳 Training</h3>
-
-                <p>
-                    Practical training in baking, pastries,
-                    food production and other food-related skills.
-                </p>
-
-            </div>
-
-
-            <div class="service">
-
-                <h3>✨ And Lots More</h3>
-
-                <p>
-                    We continue to develop products and services
-                    that meet the needs of our customers.
+                    Quality ingredients, delicious products,
+                    practical training and excellent service.
                 </p>
 
             </div>
@@ -229,52 +127,131 @@
     </section>
 
 
-    <!-- MISSION -->
+    <!-- Services -->
 
-    <section class="mission">
+    <section id="services" class="section services-section">
 
-        <h2>Our Mission</h2>
+        <div class="section-title">
 
-        <p>
-            To provide quality food products and professional
-            services while creating opportunities for people
-            to learn, grow and build sustainable food businesses.
-        </p>
+            <p>WHAT WE DO</p>
+
+            <h2>Our Services</h2>
+
+        </div>
+
+
+        <div class="services">
+
+            <div class="service-card">
+
+                <div class="icon">🎂</div>
+
+                <h3>Cakes & Pastries</h3>
+
+                <p>
+                    Beautiful and delicious cakes, pastries and
+                    baked treats for every occasion.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="icon">🍹</div>
+
+                <h3>Food & Drinks</h3>
+
+                <p>
+                    Snacks, small chops, drinks and delicious food
+                    prepared with care.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="icon">👩🏽‍🍳</div>
+
+                <h3>Food Training</h3>
+
+                <p>
+                    Practical training in baking, cake decoration,
+                    pastries, food production and more.
+                </p>
+
+                <a href="/training">
+                    Register for Training →
+                </a>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="icon">🎉</div>
+
+                <h3>Catering & Events</h3>
+
+                <p>
+                    Food, catering and event support for celebrations,
+                    meetings and special occasions.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="icon">💼</div>
+
+                <h3>Food Business Support</h3>
+
+                <p>
+                    Practical guidance for people who want to start
+                    or improve a food business.
+                </p>
+
+            </div>
+
+
+            <div class="service-card">
+
+                <div class="icon">🛒</div>
+
+                <h3>Food Supplies</h3>
+
+                <p>
+                    Selected food products, ingredients and other
+                    food-related supplies.
+                </p>
+
+            </div>
+
+        </div>
 
     </section>
 
 
-    <!-- VISION -->
+    <!-- Training CTA -->
 
-    <section class="vision">
+    <section class="training-banner">
 
-        <h2>Our Vision</h2>
+        <div>
 
-        <p>
-            To become a trusted and innovative food and hospitality
-            brand known for quality products, excellent service,
-            practical training and positive impact in our communities.
-        </p>
+            <p>READY TO LEARN?</p>
 
-    </section>
+            <h2>
+                Turn Your Passion for Food Into a Skill.
+            </h2>
 
+            <p>
+                Join our practical food training programmes and
+                learn skills you can use to create opportunities.
+            </p>
 
-    <!-- TRAINING -->
-
-    <section class="section" id="training">
-
-        <h2>Food Business Training</h2>
-
-        <p>
-            Do you want to learn how to bake, make pastries,
-            produce food products or start a food business?
-        </p>
-
-        <p>
-            Our practical training is designed to help you
-            develop useful skills and turn your knowledge
-            into opportunities.
-        </p>
+        </div>
 
         <a href="/training" class="button">
             Register for Training
@@ -283,127 +260,127 @@
     </section>
 
 
-    <!-- ORDER -->
+    <!-- Why Choose Us -->
 
-    <section class="order-section">
+    <section class="section">
 
-        <h2>Ready to Order?</h2>
+        <div class="section-title">
 
-        <p>
-            Get delicious products and quality services
-            from Dahel Food Empire.
-        </p>
+            <p>WHY DAHEL FOOD EMPIRE?</p>
 
-        <a href="/order" class="button">
-            Place an Order
-        </a>
+            <h2>Why Choose Us</h2>
 
-    </section>
+        </div>
 
 
-    <!-- CONTACT -->
+        <div class="features">
 
-    <section class="contact-section" id="contact">
-
-        <h2>Contact Us</h2>
-
-        <p>
-            We would love to hear from you.
-            Contact Dahel Food Empire for orders,
-            enquiries, training and other services.
-        </p>
-
-
-        <div class="contact-container">
-
-
-            <div class="contact-card">
-
-                <h3>📞 Call Us</h3>
-
+            <div>
+                <h3>✓ Quality</h3>
                 <p>
-                    <a href="tel:07036467758">
-                        07036467758
-                    </a>
+                    We care about the quality of our products
+                    and services.
                 </p>
-
             </div>
 
-
-            <div class="contact-card">
-
-                <h3>💬 WhatsApp</h3>
-
+            <div>
+                <h3>✓ Practical Training</h3>
                 <p>
-                    <a href="https://wa.me/2347036467758"
-                       target="_blank">
-                        07036467758
-                    </a>
+                    Our training focuses on practical,
+                    useful food skills.
                 </p>
-
             </div>
 
-
-            <div class="contact-card">
-
-                <h3>📧 Email</h3>
-
+            <div>
+                <h3>✓ Customer Focus</h3>
                 <p>
-                    <a href="mailto:dahelfoodempire@gmail.com">
-                        dahelfoodempire@gmail.com
-                    </a>
+                    We listen to our customers and strive to
+                    create a pleasant experience.
                 </p>
-
             </div>
 
-
-            <div class="contact-card">
-
-                <h3>📍 Head Office</h3>
-
+            <div>
+                <h3>✓ Creativity</h3>
                 <p>
-                    Lafia, Nasarawa State
+                    We continuously explore new ideas and ways
+                    to create delight.
                 </p>
-
             </div>
-
-
-            <div class="contact-card">
-
-                <h3>📍 Branch Office</h3>
-
-                <p>
-                    Makurdi, Benue State
-                </p>
-
-            </div>
-
-
-            <div class="contact-card">
-
-                <h3>📱 Social Media</h3>
-
-                <p>
-                    @dahelfoodempire
-                </p>
-
-            </div>
-
 
         </div>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- Contact -->
+
+    <section id="contact" class="contact-section">
+
+        <div class="section-title">
+
+            <p>GET IN TOUCH</p>
+
+            <h2>Contact Dahel Food Empire</h2>
+
+        </div>
+
+
+        <div class="contact-content">
+
+            <div>
+
+                <h3>Let's Create Delight Together</h3>
+
+                <p>
+                    Have an order, training enquiry or business
+                    question? We'd love to hear from you.
+                </p>
+
+            </div>
+
+
+            <div class="contact-details">
+
+                <p>
+                    📞 <strong>Phone:</strong>
+                    Contact us for enquiries
+                </p>
+
+                <p>
+                    📧 <strong>Email:</strong>
+                    dahelfoodempire@gmail.com
+                </p>
+
+                <p>
+                    📱 <strong>Social Media:</strong>
+                    @dahelfoodempire
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
 
     <footer>
 
-        <h3>Dahel Food Empire</h3>
+        <h2>Dahel Food Empire</h2>
 
         <p>Creating Delight</p>
 
-        <p>
+        <div class="footer-links">
+
+            <a href="/">Home</a>
+            <a href="/training">Training</a>
+            <a href="/order">Order</a>
+            <a href="#contact">Contact</a>
+
+        </div>
+
+        <p class="copyright">
             © 2026 Dahel Food Empire. All Rights Reserved.
         </p>
 

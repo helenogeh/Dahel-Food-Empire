@@ -1,116 +1,1361 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Order - Dahel Food Empire</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Now | Dahel Food Empire</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #faf8ff;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 6%;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo h2 {
+            color: #5b3478;
+            margin-bottom: 3px;
+        }
+
+        .logo span {
+            color: #e87918;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #5b3478;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            position: relative;
+
+            min-height: 540px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 7%;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #5b3478,
+                    #7b4ba0,
+                    #2f7d49,
+                    #e87918,
+                    #5b3478
+                );
+
+            background-size: 400% 400%;
+
+            animation: movingColours 12s ease infinite;
+
+            overflow: hidden;
+        }
+
+        @keyframes movingColours {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            25% {
+                background-position: 50% 100%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            75% {
+                background-position: 50% 0%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        .hero-content {
+            max-width: 680px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-label {
+            color: #ffe0b2;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            line-height: 1.05;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+
+        /* HERO FOOD IMAGE */
+
+        .hero-image {
+            position: absolute;
+
+            right: 7%;
+            top: 65px;
+
+            width: 390px;
+            height: 390px;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+            border: 12px solid rgba(255,255,255,0.35);
+
+            box-shadow:
+                0 25px 60px rgba(0,0,0,0.25);
+
+            animation: floatingFood 5s ease-in-out infinite;
+
+            z-index: 3;
+        }
+
+        @keyframes floatingFood {
+
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-18px) rotate(2deg);
+            }
+        }
+
+
+        /* FLOATING CIRCLES */
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.18;
+        }
+
+        .circle.one {
+            width: 230px;
+            height: 230px;
+            background: white;
+            right: 2%;
+            top: 10px;
+        }
+
+        .circle.two {
+            width: 150px;
+            height: 150px;
+            background: #ff9f43;
+            right: 35%;
+            bottom: -40px;
+        }
+
+        .circle.three {
+            width: 180px;
+            height: 180px;
+            background: #c89cff;
+            left: -50px;
+            bottom: -40px;
+        }
+
+
+        /* =========================
+           IMAGE STRIP
+        ========================= */
+
+        .food-strip {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            padding: 18px;
+
+            background: white;
+        }
+
+        .food-strip img {
+            width: 100%;
+            height: 190px;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            transition: 0.4s;
+        }
+
+        .food-strip img:hover {
+            transform: scale(1.04);
+        }
+
+
+        /* =========================
+           ORDER SECTION
+        ========================= */
+
+        .order-section {
+            padding: 90px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f1e5ff,
+                    #f3fff6,
+                    #fff1e3
+                );
+        }
+
+
+        .order-container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                0.85fr 1.15fr;
+
+            background: white;
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 70px rgba(91, 52, 120, 0.18);
+        }
+
+
+        /* =========================
+           LEFT ORDER INFORMATION
+        ========================= */
+
+        .order-info {
+            padding: 55px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #5b3478,
+                    #713f91,
+                    #2f7d49
+                );
+        }
+
+        .order-info h2 {
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .order-info > p {
+            line-height: 1.8;
+            opacity: 0.92;
+        }
+
+
+        /* BENEFITS */
+
+        .benefits {
+            margin-top: 38px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            background: #ff9f43;
+
+            border-radius: 50%;
+
+            font-size: 22px;
+        }
+
+
+        /* WATERMARK */
+
+        .watermark {
+            margin-top: 70px;
+
+            font-size: 34px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            opacity: 0.13;
+
+            transform: rotate(-7deg);
+
+            user-select: none;
+        }
+
+
+        /* =========================
+           ORDER FORM
+        ========================= */
+
+        .order-form {
+            padding: 55px;
+        }
+
+        .order-form h2 {
+            color: #5b3478;
+
+            font-size: 34px;
+
+            margin-bottom: 8px;
+        }
+
+        .order-form-intro {
+            color: #777;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* FORM GROUP */
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+            color: #444;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+
+            padding: 14px;
+
+            border: 2px solid #eee;
+
+            border-radius: 12px;
+
+            font-size: 15px;
+
+            background: white;
+
+            transition: 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+
+            border-color: #8d5ab7;
+
+            box-shadow:
+                0 0 0 4px rgba(91, 52, 120, 0.08);
+        }
+
+
+        /* =========================
+           PRODUCT OPTIONS
+        ========================= */
+
+        .product-options {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 13px;
+
+            margin-bottom: 25px;
+        }
+
+        .product-option {
+            position: relative;
+        }
+
+        .product-option input {
+            position: absolute;
+
+            opacity: 0;
+        }
+
+        .product-option label {
+            display: block;
+
+            padding: 17px;
+
+            border: 2px solid #eee1f7;
+
+            border-radius: 14px;
+
+            background: #fcfaff;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .product-option label:hover {
+            border-color: #9b68bb;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 7px 18px rgba(91, 52, 120, 0.08);
+        }
+
+        .product-option input:checked + label {
+            background: #eee1ff;
+
+            border-color: #5b3478;
+
+            color: #5b3478;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 7px 20px rgba(91, 52, 120, 0.12);
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .order-button {
+            width: 100%;
+
+            border: none;
+
+            padding: 18px;
+
+            border-radius: 13px;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #5b3478,
+                    #2f7d49,
+                    #ff8c2a,
+                    #5b3478
+                );
+
+            background-size: 300% 100%;
+
+            animation: buttonColours 6s linear infinite;
+
+            transition: 0.3s;
+        }
+
+        @keyframes buttonColours {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 300% 50%;
+            }
+        }
+
+        .order-button:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 30px rgba(91, 52, 120, 0.25);
+        }
+
+
+        /* =========================
+           GALLERY
+        ========================= */
+
+        .gallery {
+            padding: 85px 6%;
+
+            background: white;
+
+            text-align: center;
+        }
+
+        .gallery h2 {
+            color: #5b3478;
+
+            font-size: 40px;
+
+            margin-bottom: 10px;
+        }
+
+        .gallery > p {
+            color: #777;
+
+            margin-bottom: 35px;
+        }
+
+        .gallery-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.3fr 1fr 1fr;
+
+            grid-auto-rows: 230px;
+
+            gap: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            transition: 0.4s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .gallery-grid img:first-child {
+            grid-row: span 2;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            padding: 80px 20px;
+
+            text-align: center;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #5b3478,
+                    #2f7d49,
+                    #e87918,
+                    #5b3478
+                );
+
+            background-size: 300% 300%;
+
+            animation: movingColours 10s ease infinite;
+        }
+
+        .cta h2 {
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 650px;
+
+            margin: auto;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #24152f;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 45px 20px;
+        }
+
+        footer h2 {
+            color: #d9b4ff;
+
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #ccc;
+
+            margin: 7px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .hero-image {
+                width: 300px;
+                height: 300px;
+
+                right: 3%;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 600px;
+            }
+
+            .hero-content {
+                text-align: center;
+                margin: auto;
+            }
+
+            .hero-image {
+                width: 230px;
+                height: 230px;
+
+                right: 50%;
+
+                transform: translateX(50%);
+
+                top: auto;
+
+                bottom: 30px;
+            }
+
+            .order-container {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 15px;
+            }
+
+            nav {
+                gap: 12px;
+
+                font-size: 13px;
+            }
+
+            .hero {
+                padding: 55px 25px 300px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .hero-image {
+                width: 210px;
+                height: 210px;
+            }
+
+            .food-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .food-strip img {
+                height: 140px;
+            }
+
+            .order-info,
+            .order-form {
+                padding: 32px 22px;
+            }
+
+            .order-info h2 {
+                font-size: 30px;
+            }
+
+            .product-options {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+
+                grid-auto-rows: 220px;
+            }
+
+            .gallery-grid img:first-child {
+                grid-row: span 1;
+            }
+
+            .gallery h2 {
+                font-size: 32px;
+            }
+
+            .cta h2 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Dahel Food Empire</h1>
-        <p>Place Your Order</p>
-    </header>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header class="navbar">
+
+    <div class="logo">
+
+        <h2>Dahel Food Empire</h2>
+
+        <span>Creating Delight</span>
+
+    </div>
+
 
     <nav>
+
         <a href="/">Home</a>
+
+        <a href="/#about">About</a>
+
+        <a href="/#services">Services</a>
+
+        <a href="/training">Training</a>
+
         <a href="/order">Order Now</a>
+
+        <a href="/#contact">Contact</a>
+
     </nav>
 
-    <section class="products">
+</header>
 
-        <h2>Place Your Order</h2>
 
-        <p>Choose what you would like to order.</p>
 
-        <form method="POST" action="/order">
+<!-- =========================
+     HERO
+========================= -->
 
-            <label for="product">Select Product:</label>
-            <br><br>
+<section class="hero">
 
-            <select id="product" name="product" required>
+    <div class="circle one"></div>
 
-                <option value="Cake">Cake</option>
+    <div class="circle two"></div>
 
-                <option value="Pastries">Pastries</option>
+    <div class="circle three"></div>
 
-                <option value="Snacks">Snacks</option>
 
-                <option value="Drinks">Drinks</option>
+    <div class="hero-content">
 
-            </select>
+        <p class="hero-label">
+            WELCOME TO DAHEL FOOD EMPIRE
+        </p>
 
-            <br><br>
+        <h1>
+            Deliciousness Delivered With Love 💜
+        </h1>
 
-            <label for="quantity">Quantity:</label>
-            <br><br>
+        <p>
+            From beautiful cakes and tasty pastries to delicious
+            food and refreshing drinks, we're here to create
+            something special for you.
+        </p>
 
-            <input
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="1"
-                value="1"
-                required
+    </div>
+
+
+    <img
+        class="hero-image"
+        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+        alt="Beautiful cake"
+    >
+
+</section>
+
+
+
+<!-- =========================
+     FOOD IMAGE STRIP
+========================= -->
+
+<section class="food-strip">
+
+    <img
+        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+        alt="Cake"
+    >
+
+    <img
+        src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=80"
+        alt="Pastries"
+    >
+
+    <img
+        src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+        alt="Food"
+    >
+
+    <img
+        src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"
+        alt="Drinks"
+    >
+
+</section>
+
+
+
+<!-- =========================
+     ORDER SECTION
+========================= -->
+
+<section class="order-section">
+
+    <div class="order-container">
+
+
+        <!-- LEFT SIDE -->
+
+        <div class="order-info">
+
+            <h2>
+                Let's Make Something Delicious! 🍰
+            </h2>
+
+            <p>
+                Tell us what you'd love and we'll get your
+                order ready with care.
+            </p>
+
+
+            <div class="benefits">
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        🎂
+                    </div>
+
+                    <span>
+                        Freshly prepared products
+                    </span>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        💚
+                    </div>
+
+                    <span>
+                        Quality ingredients
+                    </span>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        🚚
+                    </div>
+
+                    <span>
+                        Convenient ordering
+                    </span>
+
+                </div>
+
+
+                <div class="benefit">
+
+                    <div class="benefit-icon">
+                        ❤️
+                    </div>
+
+                    <span>
+                        Made with care
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- WATERMARK -->
+
+            <div class="watermark">
+                DAHEL FOOD EMPIRE
+            </div>
+
+        </div>
+
+
+
+        <!-- RIGHT SIDE -->
+
+        <form
+            method="POST"
+            action="/order"
+            class="order-form"
+        >
+
+            <h2>
+                🛒 Place Your Order
+            </h2>
+
+            <p class="order-form-intro">
+                Fill in your details and tell us what you need.
+            </p>
+
+
+
+            <!-- PRODUCT -->
+
+            <div class="form-group">
+
+                <label>
+                    What would you like to order?
+                </label>
+
+
+                <div class="product-options">
+
+
+                    <div class="product-option">
+
+                        <input
+                            type="radio"
+                            id="cake"
+                            name="product"
+                            value="Cakes"
+                            required
+                        >
+
+                        <label for="cake">
+                            🎂 Cakes
+                        </label>
+
+                    </div>
+
+
+                    <div class="product-option">
+
+                        <input
+                            type="radio"
+                            id="pastries"
+                            name="product"
+                            value="Pastries"
+                        >
+
+                        <label for="pastries">
+                            🥐 Pastries
+                        </label>
+
+                    </div>
+
+
+                    <div class="product-option">
+
+                        <input
+                            type="radio"
+                            id="food"
+                            name="product"
+                            value="Food"
+                        >
+
+                        <label for="food">
+                            🍲 Food
+                        </label>
+
+                    </div>
+
+
+                    <div class="product-option">
+
+                        <input
+                            type="radio"
+                            id="drinks"
+                            name="product"
+                            value="Drinks"
+                        >
+
+                        <label for="drinks">
+                            🥤 Drinks
+                        </label>
+
+                    </div>
+
+
+                    <div class="product-option">
+
+                        <input
+                            type="radio"
+                            id="snacks"
+                            name="product"
+                            value="Snacks"
+                        >
+
+                        <label for="snacks">
+                            🍿 Snacks
+                        </label>
+
+                    </div>
+
+
+                    <div class="product-option">
+
+                        <input
+                            type="radio"
+                            id="other"
+                            name="product"
+                            value="Other"
+                        >
+
+                        <label for="other">
+                            ✨ Other
+                        </label>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUANTITY -->
+
+            <div class="form-group">
+
+                <label for="quantity">
+                    Quantity
+                </label>
+
+                <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    min="1"
+                    placeholder="e.g. 2"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="080..."
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- ADDRESS -->
+
+            <div class="form-group">
+
+                <label for="address">
+                    Delivery Address
+                </label>
+
+                <textarea
+                    id="address"
+                    name="address"
+                    rows="4"
+                    placeholder="Enter your delivery address"
+                    required
+                ></textarea>
+
+            </div>
+
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="order-button"
             >
-
-            <br><br>
-
-            <label for="name">Your Name:</label>
-            <br><br>
-
-            <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your name"
-                required
-            >
-
-            <br><br>
-
-            <label for="phone">Phone Number:</label>
-            <br><br>
-
-            <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="Enter your phone number"
-                required
-            >
-
-            <br><br>
-
-            <label for="address">Delivery Address:</label>
-            <br><br>
-
-            <textarea
-                id="address"
-                name="address"
-                placeholder="Enter your delivery address"
-                rows="4"
-                required
-            ></textarea>
-
-            <br><br>
-
-            <button type="submit" class="button">
-                Place Order
+                🛍️ Submit My Order
             </button>
+
 
         </form>
 
-    </section>
+    </div>
 
-    <footer>
+</section>
 
-        <p>
-            © 2026 Dahel Food Empire. Creating Delight.
-        </p>
 
-    </footer>
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section class="gallery">
+
+    <h2>
+        A Little Taste of Dahel 💜
+    </h2>
+
+    <p>
+        Creating delicious moments, one product at a time.
+    </p>
+
+
+    <div class="gallery-grid">
+
+        <img
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80"
+            alt="Cake"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1626803775151-61d756612f97?auto=format&fit=crop&w=800&q=80"
+            alt="Cake decoration"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=80"
+            alt="Pastries"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80"
+            alt="Food"
+        >
+
+        <img
+            src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=800&q=80"
+            alt="Drinks"
+        >
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+    <h2>
+        Your Cravings. Our Delight. 💜
+    </h2>
+
+    <p>
+        Whatever you're celebrating or craving,
+        Dahel Food Empire is ready to create something
+        delicious for you.
+    </p>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h2>
+        Dahel Food Empire
+    </h2>
+
+    <p>
+        Creating Delight
+    </p>
+
+    <p>
+        © 2026 Dahel Food Empire. All Rights Reserved.
+    </p>
+
+</footer>
+
 
 </body>
+
 </html>
