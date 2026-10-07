@@ -2,389 +2,1350 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dahel Food Empire | Creating Delight</title>
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 6%;
+
+            background: rgba(255, 255, 255, 0.95);
+
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo h2 {
+            color: #5b3478;
+        }
+
+        .logo span {
+            color: #e87918;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #5b3478;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 700px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            padding: 80px 7%;
+
+            color: white;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #5b3478,
+                    #8e55b5,
+                    #2f7d49,
+                    #56a86b,
+                    #e87918,
+                    #ff9d3c,
+                    #5b3478
+                );
+
+            background-size: 600% 600%;
+
+            animation: waveColours 12s ease-in-out infinite;
+        }
+
+
+        /* MAIN MOVING COLOUR EFFECT */
+
+        @keyframes waveColours {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            20% {
+                background-position: 50% 20%;
+            }
+
+            40% {
+                background-position: 100% 50%;
+            }
+
+            60% {
+                background-position: 70% 100%;
+            }
+
+            80% {
+                background-position: 20% 80%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+
+        /* =========================
+           WAVING LIGHT SHAPES
+        ========================= */
+
+        .wave {
+            position: absolute;
+
+            width: 900px;
+            height: 900px;
+
+            border-radius: 45%;
+
+            opacity: 0.18;
+
+            filter: blur(2px);
+
+            animation: waveMove 10s ease-in-out infinite;
+        }
+
+        .wave-one {
+            background: #ffffff;
+
+            top: -550px;
+            left: -200px;
+
+            transform: rotate(25deg);
+        }
+
+        .wave-two {
+            background: #8cffae;
+
+            right: -400px;
+            bottom: -550px;
+
+            animation-delay: -3s;
+        }
+
+        .wave-three {
+            background: #ffb15c;
+
+            left: 35%;
+            bottom: -700px;
+
+            animation-delay: -6s;
+        }
+
+
+        @keyframes waveMove {
+
+            0%, 100% {
+                transform: rotate(20deg) translate(0, 0);
+            }
+
+            50% {
+                transform: rotate(35deg) translate(80px, -50px);
+            }
+
+        }
+
+
+        /* =========================
+           HERO CONTENT
+        ========================= */
+
+        .hero-content {
+            max-width: 650px;
+
+            position: relative;
+
+            z-index: 10;
+        }
+
+        .hero-label {
+            font-weight: bold;
+
+            letter-spacing: 4px;
+
+            color: #ffe0b2;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 65px;
+
+            line-height: 1.05;
+
+            margin-bottom: 25px;
+
+            text-shadow:
+                0 5px 20px rgba(0,0,0,0.18);
+        }
+
+        .hero p {
+            font-size: 20px;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           HERO BUTTONS
+        ========================= */
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 16px 28px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: white;
+
+            color: #5b3478;
+        }
+
+        .btn-secondary {
+            border: 2px solid white;
+
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 12px 25px rgba(0,0,0,0.2);
+        }
+
+
+        /* =========================
+           HERO FOOD IMAGE
+        ========================= */
+
+        .hero-food {
+            position: absolute;
+
+            right: 7%;
+
+            top: 130px;
+
+            width: 410px;
+
+            height: 410px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 12px solid rgba(255,255,255,0.35);
+
+            box-shadow:
+                0 30px 70px rgba(0,0,0,0.3);
+
+            z-index: 5;
+
+            animation: foodFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes foodFloat {
+
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(3deg);
+            }
+
+        }
+
+
+        /* =========================
+           FLOATING CIRCLES
+        ========================= */
+
+        .circle {
+            position: absolute;
+
+            border-radius: 50%;
+
+            background: white;
+
+            opacity: 0.12;
+
+            animation: circleFloat 8s ease-in-out infinite;
+        }
+
+        .circle-one {
+            width: 100px;
+            height: 100px;
+
+            right: 45%;
+
+            top: 10%;
+
+        }
+
+        .circle-two {
+            width: 180px;
+            height: 180px;
+
+            left: 5%;
+
+            bottom: 10%;
+
+            animation-delay: -3s;
+        }
+
+        .circle-three {
+            width: 70px;
+            height: 70px;
+
+            right: 10%;
+
+            bottom: 10%;
+
+            animation-delay: -5s;
+        }
+
+        @keyframes circleFloat {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-30px);
+            }
+
+        }
+
+
+        /* =========================
+           FOOD STRIP
+        ========================= */
+
+        .food-strip {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 12px;
+
+            padding: 18px;
+
+            background: white;
+        }
+
+        .food-strip img {
+            width: 100%;
+
+            height: 190px;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+            transition: 0.4s;
+        }
+
+        .food-strip img:hover {
+            transform: scale(1.05);
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            padding: 90px 7%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f5eaff,
+                    #effff3,
+                    #fff3e7
+                );
+        }
+
+        .about-container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 60px;
+
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+
+            height: 450px;
+
+            object-fit: cover;
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 20px 50px rgba(91,52,120,0.2);
+        }
+
+        .about h2 {
+            color: #5b3478;
+
+            font-size: 45px;
+
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            line-height: 1.8;
+
+            margin-bottom: 20px;
+
+            color: #555;
+        }
+
+        .about-highlight {
+            padding: 20px;
+
+            border-left: 5px solid #2f7d49;
+
+            background: white;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            color: #5b3478;
+        }
+
+
+        /* =========================
+           SERVICES
+        ========================= */
+
+        .services {
+            padding: 90px 6%;
+
+            background: white;
+
+            text-align: center;
+        }
+
+        .services h2 {
+            color: #5b3478;
+
+            font-size: 45px;
+
+            margin-bottom: 12px;
+        }
+
+        .services-intro {
+            color: #777;
+
+            margin-bottom: 45px;
+        }
+
+        .service-grid {
+            max-width: 1200px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+        .service-card {
+            background: #fff;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.08);
+
+            transition: 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 20px 45px rgba(91,52,120,0.18);
+        }
+
+        .service-card img {
+            width: 100%;
+
+            height: 210px;
+
+            object-fit: cover;
+        }
+
+        .service-card-content {
+            padding: 25px;
+        }
+
+        .service-card h3 {
+            color: #5b3478;
+
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #666;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           WHY CHOOSE US
+        ========================= */
+
+        .why-us {
+            padding: 90px 6%;
+
+            color: white;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #5b3478,
+                    #2f7d49,
+                    #e87918,
+                    #5b3478
+                );
+
+            background-size: 500% 500%;
+
+            animation: waveColours 14s ease-in-out infinite;
+        }
+
+        .why-us h2 {
+            font-size: 43px;
+
+            margin-bottom: 40px;
+        }
+
+        .why-grid {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .why-card {
+            padding: 30px 20px;
+
+            background: rgba(255,255,255,0.14);
+
+            border-radius: 20px;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .why-icon {
+            font-size: 40px;
+
+            margin-bottom: 15px;
+        }
+
+        .why-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            line-height: 1.6;
+
+            opacity: 0.9;
+        }
+
+
+        /* =========================
+           ORDER CTA
+        ========================= */
+
+        .cta {
+            padding: 100px 20px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f1e3ff,
+                    #edfff2,
+                    #fff0df
+                );
+        }
+
+        .cta h2 {
+            color: #5b3478;
+
+            font-size: 48px;
+
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #666;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+
+            padding: 17px 35px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #5b3478,
+                    #2f7d49,
+                    #e87918,
+                    #5b3478
+                );
+
+            background-size: 300% 100%;
+
+            animation: buttonFlow 6s linear infinite;
+        }
+
+        @keyframes buttonFlow {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 300% 50%;
+            }
+
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 50px 20px;
+
+            text-align: center;
+
+            color: white;
+
+            background: #24152f;
+        }
+
+        footer h2 {
+            color: #d9b4ff;
+
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #ccc;
+
+            margin: 7px;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .hero-food {
+                width: 300px;
+                height: 300px;
+
+                right: 3%;
+            }
+
+            .hero h1 {
+                font-size: 50px;
+            }
+
+            .service-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .navbar {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 800px;
+
+                padding: 70px 25px 370px;
+
+                text-align: center;
+            }
+
+            .hero-content {
+                margin: auto;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-food {
+                width: 250px;
+                height: 250px;
+
+                right: 50%;
+
+                transform: translateX(50%);
+
+                top: auto;
+
+                bottom: 40px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                height: 350px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .food-strip {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .food-strip img {
+                height: 140px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about h2 {
+                font-size: 35px;
+            }
+
+            .services h2 {
+                font-size: 35px;
+            }
+
+            .cta h2 {
+                font-size: 35px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <!-- Navigation -->
 
-    <header class="navbar">
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-        <div class="logo">
-            <h2>Dahel Food Empire</h2>
-            <span>Creating Delight</span>
-        </div>
+<header class="navbar">
 
-        <nav>
-            <a href="/">Home</a>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="/training">Training</a>
-            <a href="/order">Order Now</a>
-            <a href="#contact">Contact</a>
-        </nav>
-
-    </header>
-
-
-    <!-- Hero Section -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <p class="welcome">
-                WELCOME TO DAHEL FOOD EMPIRE
-            </p>
-
-            <h1>
-                Delicious Food.<br>
-                Beautiful Moments.
-            </h1>
-
-            <p class="hero-text">
-                We create delicious cakes, pastries, snacks, drinks
-                and food while helping aspiring food entrepreneurs
-                develop practical skills.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="/order" class="button">
-                    Order Now
-                </a>
-
-                <a href="/training" class="button button-outline">
-                    Join Our Training
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- About Section -->
-
-    <section id="about" class="section">
-
-        <div class="section-title">
-
-            <p>ABOUT US</p>
-
-            <h2>Creating Delight Through Food</h2>
-
-        </div>
-
-        <div class="about-content">
-
-            <div>
-
-                <h3>Welcome to Dahel Food Empire</h3>
-
-                <p>
-                    Dahel Food Empire is a food business focused on
-                    creating delicious food products and providing
-                    practical food production and business training.
-                </p>
-
-                <p>
-                    From cakes and pastries to snacks, drinks,
-                    catering and food production, we are passionate
-                    about creating quality products and helping
-                    people turn their food skills into opportunities.
-                </p>
-
-                <a href="/training" class="text-button">
-                    Learn About Our Training →
-                </a>
-
-            </div>
-
-            <div class="about-card">
-
-                <h3>Our Promise</h3>
-
-                <p>
-                    Quality ingredients, delicious products,
-                    practical training and excellent service.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Services -->
-
-    <section id="services" class="section services-section">
-
-        <div class="section-title">
-
-            <p>WHAT WE DO</p>
-
-            <h2>Our Services</h2>
-
-        </div>
-
-
-        <div class="services">
-
-            <div class="service-card">
-
-                <div class="icon">🎂</div>
-
-                <h3>Cakes & Pastries</h3>
-
-                <p>
-                    Beautiful and delicious cakes, pastries and
-                    baked treats for every occasion.
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="icon">🍹</div>
-
-                <h3>Food & Drinks</h3>
-
-                <p>
-                    Snacks, small chops, drinks and delicious food
-                    prepared with care.
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="icon">👩🏽‍🍳</div>
-
-                <h3>Food Training</h3>
-
-                <p>
-                    Practical training in baking, cake decoration,
-                    pastries, food production and more.
-                </p>
-
-                <a href="/training">
-                    Register for Training →
-                </a>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="icon">🎉</div>
-
-                <h3>Catering & Events</h3>
-
-                <p>
-                    Food, catering and event support for celebrations,
-                    meetings and special occasions.
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="icon">💼</div>
-
-                <h3>Food Business Support</h3>
-
-                <p>
-                    Practical guidance for people who want to start
-                    or improve a food business.
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="icon">🛒</div>
-
-                <h3>Food Supplies</h3>
-
-                <p>
-                    Selected food products, ingredients and other
-                    food-related supplies.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Training CTA -->
-
-    <section class="training-banner">
-
-        <div>
-
-            <p>READY TO LEARN?</p>
-
-            <h2>
-                Turn Your Passion for Food Into a Skill.
-            </h2>
-
-            <p>
-                Join our practical food training programmes and
-                learn skills you can use to create opportunities.
-            </p>
-
-        </div>
-
-        <a href="/training" class="button">
-            Register for Training
-        </a>
-
-    </section>
-
-
-    <!-- Why Choose Us -->
-
-    <section class="section">
-
-        <div class="section-title">
-
-            <p>WHY DAHEL FOOD EMPIRE?</p>
-
-            <h2>Why Choose Us</h2>
-
-        </div>
-
-
-        <div class="features">
-
-            <div>
-                <h3>✓ Quality</h3>
-                <p>
-                    We care about the quality of our products
-                    and services.
-                </p>
-            </div>
-
-            <div>
-                <h3>✓ Practical Training</h3>
-                <p>
-                    Our training focuses on practical,
-                    useful food skills.
-                </p>
-            </div>
-
-            <div>
-                <h3>✓ Customer Focus</h3>
-                <p>
-                    We listen to our customers and strive to
-                    create a pleasant experience.
-                </p>
-            </div>
-
-            <div>
-                <h3>✓ Creativity</h3>
-                <p>
-                    We continuously explore new ideas and ways
-                    to create delight.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Contact -->
-
-    <section id="contact" class="contact-section">
-
-        <div class="section-title">
-
-            <p>GET IN TOUCH</p>
-
-            <h2>Contact Dahel Food Empire</h2>
-
-        </div>
-
-
-        <div class="contact-content">
-
-            <div>
-
-                <h3>Let's Create Delight Together</h3>
-
-                <p>
-                    Have an order, training enquiry or business
-                    question? We'd love to hear from you.
-                </p>
-
-            </div>
-
-
-            <div class="contact-details">
-
-                <p>
-                    📞 <strong>Phone:</strong>
-                    Contact us for enquiries
-                </p>
-
-                <p>
-                    📧 <strong>Email:</strong>
-                    dahelfoodempire@gmail.com
-                </p>
-
-                <p>
-                    📱 <strong>Social Media:</strong>
-                    @dahelfoodempire
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- Footer -->
-
-    <footer>
+    <div class="logo">
 
         <h2>Dahel Food Empire</h2>
 
-        <p>Creating Delight</p>
+        <span>Creating Delight</span>
 
-        <div class="footer-links">
+    </div>
 
-            <a href="/">Home</a>
-            <a href="/training">Training</a>
-            <a href="/order">Order</a>
-            <a href="#contact">Contact</a>
+
+    <nav>
+
+        <a href="/">Home</a>
+
+        <a href="#about">About</a>
+
+        <a href="#services">Services</a>
+
+        <a href="/training">Training</a>
+
+        <a href="/order">Order Now</a>
+
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+
+    <!-- WAVES -->
+
+    <div class="wave wave-one"></div>
+
+    <div class="wave wave-two"></div>
+
+    <div class="wave wave-three"></div>
+
+
+    <!-- FLOATING CIRCLES -->
+
+    <div class="circle circle-one"></div>
+
+    <div class="circle circle-two"></div>
+
+    <div class="circle circle-three"></div>
+
+
+    <!-- HERO CONTENT -->
+
+    <div class="hero-content">
+
+        <p class="hero-label">
+            WELCOME TO DAHEL FOOD EMPIRE
+        </p>
+
+        <h1>
+            Creating Delight,
+            One Delicious Moment at a Time 💜
+        </h1>
+
+        <p>
+            Cakes, pastries, delicious food, refreshing drinks,
+            food production and practical training —
+            everything you need to create and enjoy delicious moments.
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a href="/order" class="btn btn-primary">
+                🛍️ Order Now
+            </a>
+
+            <a href="/training" class="btn btn-secondary">
+                🎓 Join Our Training
+            </a>
 
         </div>
 
-        <p class="copyright">
-            © 2026 Dahel Food Empire. All Rights Reserved.
-        </p>
+    </div>
 
-    </footer>
+
+    <!-- HERO IMAGE -->
+
+    <img
+        class="hero-food"
+        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+        alt="Beautiful Dahel cake"
+    >
+
+</section>
+
+
+
+<!-- =========================
+     FOOD IMAGE STRIP
+========================= -->
+
+<section class="food-strip">
+
+    <img
+        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+        alt="Cake"
+    >
+
+    <img
+        src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=80"
+        alt="Pastries"
+    >
+
+    <img
+        src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+        alt="Food"
+    >
+
+    <img
+        src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"
+        alt="Refreshing drinks"
+    >
+
+</section>
+
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="about" id="about">
+
+    <div class="about-container">
+
+
+        <img
+            class="about-image"
+            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=1000&q=80"
+            alt="Delicious food"
+        >
+
+
+        <div>
+
+            <h2>
+                About Dahel Food Empire 💜
+            </h2>
+
+            <p>
+                Dahel Food Empire is a food and training brand
+                focused on creating delicious products,
+                practical food skills and memorable experiences.
+            </p>
+
+            <p>
+                From cakes and pastries to food production,
+                catering and practical training, we are passionate
+                about quality, creativity and creating delight.
+            </p>
+
+            <div class="about-highlight">
+
+                ✨ Beyond ordinary.
+                <br>
+                💜 Creating delight.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section class="services" id="services">
+
+    <h2>
+        What We Do 🍰
+    </h2>
+
+    <p class="services-intro">
+        Delicious products, practical skills and memorable experiences.
+    </p>
+
+
+    <div class="service-grid">
+
+
+        <div class="service-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80"
+                alt="Cakes"
+            >
+
+            <div class="service-card-content">
+
+                <h3>
+                    🎂 Cakes
+                </h3>
+
+                <p>
+                    Beautiful and delicious cakes for birthdays,
+                    celebrations and special occasions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=900&q=80"
+                alt="Pastries"
+            >
+
+            <div class="service-card-content">
+
+                <h3>
+                    🥐 Pastries
+                </h3>
+
+                <p>
+                    Tasty pastries prepared with care and quality
+                    ingredients.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80"
+                alt="Food"
+            >
+
+            <div class="service-card-content">
+
+                <h3>
+                    🍲 Food
+                </h3>
+
+                <p>
+                    Delicious food products and catering services
+                    for different occasions.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="service-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80"
+                alt="Drinks"
+            >
+
+            <div class="service-card-content">
+
+                <h3>
+                    🥤 Drinks
+                </h3>
+
+                <p>
+                    Refreshing drinks and beverages made to complement
+                    your meals and celebrations.
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WHY CHOOSE US
+========================= -->
+
+<section class="why-us">
+
+    <h2>
+        Why Choose Dahel? 💚
+    </h2>
+
+
+    <div class="why-grid">
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                ❤️
+            </div>
+
+            <h3>
+                Made With Care
+            </h3>
+
+            <p>
+                We put care and attention into what we create.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                ✨
+            </div>
+
+            <h3>
+                Quality
+            </h3>
+
+            <p>
+                We believe quality should never be compromised.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                🎓
+            </div>
+
+            <h3>
+                Practical Training
+            </h3>
+
+            <p>
+                Learn useful food production and baking skills.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">
+                💜
+            </div>
+
+            <h3>
+                Creating Delight
+            </h3>
+
+            <p>
+                Every product and service is designed to create delight.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta" id="contact">
+
+    <h2>
+        Ready to Experience Dahel? 💜
+    </h2>
+
+    <p>
+        Whether you want to order something delicious or learn
+        practical food skills, we're ready to welcome you.
+    </p>
+
+
+    <a
+        href="/order"
+        class="cta-button"
+    >
+        🛍️ Start Your Order
+    </a>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <h2>
+        Dahel Food Empire
+    </h2>
+
+    <p>
+        Creating Delight
+    </p>
+
+    <p>
+        Cakes • Pastries • Food • Drinks • Training
+    </p>
+
+    <p>
+        © 2026 Dahel Food Empire. All Rights Reserved.
+    </p>
+
+</footer>
 
 
 </body>
